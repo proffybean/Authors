@@ -3,11 +3,11 @@ const AuthorModel = require('../models/author.model')
 module.exports = {
 
     findAllAuthors: (req,res) => {
-        console.log('inside findAll---')
+        console.log('inside findAllAuthors')
     
         AuthorModel.find({})
         .then( (AuthorObj) => {
-            console.log(AuthorObj)
+            //console.log(AuthorObj)
             res.json(AuthorObj)
         })
         .catch( (err) => {
@@ -31,7 +31,7 @@ module.exports = {
     },
 
     findAuthorById: (req,res) => {
-        console.log('inside getAllJokes')
+        console.log('inside findAuthorById')
     
         AuthorModel.findOne({_id:req.params._id})
         .then( (AuthorObj) => {
@@ -62,6 +62,8 @@ module.exports = {
     },
 
     updateAuthor: (req, res) => {
+        console.log('inside updateAuthor')
+
         AuthorModel.findOneAndUpdate({_id:req.params._id},
         req.body,
         {new:true, runValidators:true}
