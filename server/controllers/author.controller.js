@@ -6,6 +6,8 @@ module.exports = {
         console.log('inside findAllAuthors')
     
         AuthorModel.find({})
+        .collation({locale: "en" })
+        .sort({name:1})
         .then( (AuthorObj) => {
             //console.log(AuthorObj)
             res.json(AuthorObj)
